@@ -2,13 +2,17 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-iteracion=1000000
+iteraciones=1000
 numeroEstudio=7
+valorEstimado=18
+
 iter=[]
 promedios=[]
 suma=0
 cantidad=0
-for x in range(iteracion):
+
+print('Procesando simulacion...')
+for x in range(iteraciones):
     num=random.randint(0,36)
     suma+=num
     cantidad+=1
@@ -16,12 +20,12 @@ for x in range(iteracion):
     promedios.append(suma/cantidad)
 
 fig, ax = plt.subplots(figsize=(3,2), constrained_layout=True)
+ax.plot(iter, [valorEstimado]*iteraciones)
 ax.plot(iter, promedios)
-ax.plot(iter, [18]*iteracion)
 
-ax.set_xlabel('tiradas')
+ax.set_xlabel('n (numero de tiradas)')
 ax.set_ylabel('promedio')
-ax.set_title('promedios')
+ax.set_title('Promedios')
 fig.set_facecolor('white')
 
 plt.show()

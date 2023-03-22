@@ -3,10 +3,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 iteracion=10000
+valorEstimado=np.sqrt(108)
+
 iter=[]
 muestras=[]
 desvios=[]
 
+print('Procesando simulacion...')
 for x in range(iteracion):
     num=random.randint(1,36)
     iter.append(x+1)
@@ -16,12 +19,12 @@ for x in range(iteracion):
 print(muestras)
 
 fig, ax = plt.subplots(figsize=(3,2), constrained_layout=True)
+ax.plot(iter, [valorEstimado]*iteracion)
 ax.plot(iter, desvios)
-ax.plot(iter, [np.sqrt(108)]*iteracion)
 
 ax.set_xlabel('n (numero de tiradas)')
 ax.set_ylabel('s (desvio estandar)')
-ax.set_title('desvio estandar de la muestra')
+ax.set_title('Desvio estandar de la muestra')
 fig.set_facecolor('white')
 
 plt.show()
