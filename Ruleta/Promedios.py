@@ -25,7 +25,8 @@ ax.plot(iter, calcularPromedio(),label="Run 3")
 ax.plot(iter, calcularPromedio(),label="Run 4")
 ax.plot(iter, [18]*iteracion, label="Valor Esperado: 18")
 
-ax.set_xlabel('tiradas')
+
+ax.set_xlabel('n (numero de tiradas)')
 ax.set_ylabel('promedio')
 ax.set_title('promedios')
 ax.legend()

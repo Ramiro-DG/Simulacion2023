@@ -25,6 +25,7 @@ def calcularFr():
     return frecuenciasRelativas
 
 
+
 fig, ax = plt.subplots(figsize=(5,4), constrained_layout=True)
 ax.plot(iter, calcularFr(), label="Run 1")
 ax.plot(iter, calcularFr(), label="Run 2")
