@@ -26,7 +26,7 @@ def calcularFr():
 
 
 
-fig, ax = plt.subplots(figsize=(5,4), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(7,4), constrained_layout=True)
 ax.plot(iter, calcularFr(), label="Run 1")
 ax.plot(iter, calcularFr(), label="Run 2")
 ax.plot(iter, calcularFr(), label="Run 3")

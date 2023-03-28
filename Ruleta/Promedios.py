@@ -18,7 +18,7 @@ def calcularPromedio():
         promedios.append(np.average(valores))
     return promedios
 
-fig, ax = plt.subplots(figsize=(5,4), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(7,4), constrained_layout=True)
 ax.plot(iter, calcularPromedio(),label="Run 1")
 ax.plot(iter, calcularPromedio(),label="Run 2")
 ax.plot(iter, calcularPromedio(),label="Run 3")
