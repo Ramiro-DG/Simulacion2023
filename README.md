@@ -1,9 +1,9 @@
-# Simulacion 2023
+# Simulación 2023
 
-Este repositorio contiene los trabajos practicos realizados en la materia Simulacion de cuarto año de Ingenieria en Sistemas en la UTN FRRO, los mismos tienen simulaciones hechas en Python y documentacion registrada en Latex. 
+Este repositorio contiene los trabajos practicos de la materia Simulación de cuarto año de la carrera Ingenieria en Sistemas en la UTN FRRO.
 
-Son trabajos realizados en grupo por los sigueintes integrantes:
-* Mollo Bruno
-* Braida Facundo
-* Cappellini Lucia
-* Di Giacinti Ramiro
+Los trabajos son realizados por los siguientes integrantes:
+* Mollo Bruno - 47773
+* Braida Facundo - 46095
+* Cappellini Lucia - 47799
+* Di Giacinti Ramiro - 47772
