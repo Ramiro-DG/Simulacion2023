@@ -7,3 +7,4 @@ Los trabajos son realizados por los siguientes integrantes:
 * Braida Facundo - 46095
 * Cappellini Lucia - 47799
 * Di Giacinti Ramiro - 47772
+* Gorosito Adriel - 47066
