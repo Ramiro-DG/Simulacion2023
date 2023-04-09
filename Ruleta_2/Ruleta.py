@@ -38,3 +38,14 @@ class Ruleta:
                 ganacia += a['ganacia']
         self.apuestas = []
         return ganacia
+
+
+'''
+EJEMPLO DE USO:
+r = Ruleta(random.randint(0, 36))  # inicializo ruleta
+r.apostar_numero(2, 100)  # apuesto $100 al 2
+ganacia = r.tirar()  # si salio el 2 , ganacia serai 3600, sino 0
+
+r.apostar_color(Color.ROJO, 50)  # al apostar con colores es parecido
+ganacia = r.tirar()
+'''
