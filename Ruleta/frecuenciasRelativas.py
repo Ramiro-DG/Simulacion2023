@@ -24,8 +24,10 @@ def calcularFr():
         frecuenciasRelativas.append(frecuenciasAbsolutas[y]/iter[y])
     return frecuenciasRelativas
 
+frRun = [calcularFr(), calcularFr(), calcularFr(), calcularFr()]
 
 
+# Impresión de resultados
 fig, ax = plt.subplots(figsize=(7,4), constrained_layout=True)
 ax.plot(iter, calcularFr(), label="Run 1")
 ax.plot(iter, calcularFr(), label="Run 2")
@@ -33,9 +35,30 @@ ax.plot(iter, calcularFr(), label="Run 3")
 ax.plot(iter, calcularFr(), label="Run 4")
 ax.plot(iter, [1/37]*iteracion, label="Valor esperado: 1/37")
 
-ax.set_xlabel('n (numero de tiradas)')
+ax.set_xlabel('N° (Número de tiradas)')
 ax.set_ylabel('fr (frecuencia relativa)')
-ax.set_title('frecuencia relativa del numero 7')
+ax.set_title('Frecuencia relativa del número 7')
+ax.legend()
+fig.set_facecolor('white')
+
+plt.show()
+
+
+# Realizo gráfica del promedio de las frecuencias relativas
+promFromFrRun = []
+for iteracion in iter:
+    suma = 0
+    for run in frRun:
+        suma += run[iteracion-1]
+    promFromFrRun.append(suma/len(frRun))
+
+fig, ax = plt.subplots(figsize=(7, 4), constrained_layout=True)
+ax.plot(iter, promFromFrRun, label="Promedio de las frecuencias relativas obtenidos de las cuatro corridas")
+ax.plot(iter, [1/37]*iteracion, label="Valor esperado: 1/37")
+
+ax.set_xlabel('N° (Número de tiradas)')
+ax.set_ylabel('fr (Frecuencia relativa)')
+ax.set_title('Promedios de frecuencias relativas')
 ax.legend()
 fig.set_facecolor('white')
 
