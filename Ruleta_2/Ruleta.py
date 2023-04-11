@@ -24,6 +24,8 @@ class Color:
 
 
 class Ruleta:
+    MAX_MONTO = 10_000
+
     def __init__(self, generate_number):
         self.generate_number = generate_number
         self.apuestas = []
