@@ -9,7 +9,6 @@ for n in range(30):
     capital = 1000
     flujoCaja = []
     while(capital>50 and iteraciones>0):
-
         r = Ruleta(lambda: random.randint(0, 36))
         r.apostar_columna(2, 20)
         r.apostar_color(Color.ROJO, 30)
@@ -18,15 +17,8 @@ for n in range(30):
         capital = capital-50+ganancia
         flujoCaja.append(capital)
         iteraciones-=1
-        print(flujoCaja, capital, iteraciones)
+        
     ax.plot(range(1,len(flujoCaja)+1), flujoCaja, label="Flujo de caja")
-
-# if(ganancia>0):
-#     totalVecesGanadas+=1
-# frGanancia.append(totalVecesGanadas/(n+1))
-
-# ax2.plot(arrayIteraciones, frGanancia, label="fr de Ganancia")
-    
 
 ax.plot(range(1,2001), [1000]*2000, label="Capital inicial")
 
@@ -34,7 +26,6 @@ ax.set_xlabel('N° (Número de tiradas)')
 ax.set_ylabel('Cantidad de capital')
 ax.set_title('Flujo de capital con dinero finito')
 
-# ax.legend()
 fig.set_facecolor('white')
 
 plt.show()
