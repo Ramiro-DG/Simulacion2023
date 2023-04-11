@@ -34,7 +34,7 @@ def run_todo_a_uno(n, capital_incial=None):
         flujo_caja_acumulado += flujo_caja_en_tirada
         if (flujo_caja_en_tirada > 0):
             fa += 1
-        frecuencias_relativas_apuestas_favorables.append(fa/n)
+        frecuencias_relativas_apuestas_favorables.append(fa/(i+1))
         flujos_en_caja.append(flujo_caja_acumulado)
 
     pn = frecuencias_relativas_apuestas_favorables[-1]  # ultimo elemento

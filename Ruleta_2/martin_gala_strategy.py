@@ -23,7 +23,7 @@ def run_martingala(n, capital_incial=None):
     for i in range(n):
         if (capital_incial is not None and capital_incial+flujo_caja_acumulado == 0):
             flujos_en_caja.append(flujo_caja_acumulado)
-            frecuencias_relativas_apuestas_favorables.append(fa/n)
+            frecuencias_relativas_apuestas_favorables.append(fa/(i+1))
             continue  # sin plata
 
         flujo_caja_en_tirada = 0
