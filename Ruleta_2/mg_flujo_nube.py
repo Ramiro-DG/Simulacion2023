@@ -11,7 +11,7 @@ for i in range(runs):
     print('aproximacion final :', fl[-1])
     ax.plot(i, fl, label="Flujo de caja")
 
-ax.plot(i, [0]*n, label="capital inicial")
+ax.axhline(y=0, color='b', linestyle='dotted')
 ax.set_xlabel('N° (Número de tiradas)')
 ax.set_ylabel('Cantidad de capital')
 ax.set_title('Flujo de capital')

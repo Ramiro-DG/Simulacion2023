@@ -23,10 +23,9 @@ def run_todo_a_uno(n, capital_incial=None):
     frecuencias_relativas_apuestas_favorables = []
     flujos_en_caja = []
     for i in range(n):
-        if (capital_incial is not None and capital_incial+flujo_caja_acumulado == 0):
-            flujos_en_caja.append(flujo_caja_acumulado)
-            frecuencias_relativas_apuestas_favorables.append(fa/n)
-            continue  # sin plata
+        if (capital_incial is not None and capital_incial+flujo_caja_acumulado < 0):
+            iteraciones = range(1, len(flujos_en_caja)+1)
+            break  # sin plata
         flujo_caja_en_tirada = 0
         flujo_caja_en_tirada -= monto
         r.apostar_numero(numeroElegido, monto)

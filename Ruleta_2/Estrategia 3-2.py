@@ -12,24 +12,24 @@ fig2, ax2 = plt.subplots(figsize=(7, 4), constrained_layout=True)
 for r in range(30):
     capitalInicial = 0.0
     flujoCaja = []
-    frGanancia=[]
-    totalVecesGanadas=0
+    frGanancia = []
+    totalVecesGanadas = 0
     for n in range(iteraciones):
         r = Ruleta(lambda: random.randint(0, 36))
         r.apostar_columna(2, apuestaColumna)
         r.apostar_color(Color.ROJO, apuestaRojo)
         ganancia = r.tirar()
-        if(ganancia>0):
-            totalVecesGanadas+=1
+        if (ganancia > 0):
+            totalVecesGanadas += 1
         frGanancia.append(totalVecesGanadas/(n+1))
         capitalInicial = capitalInicial-(apuestaRojo+apuestaColumna)+ganancia
         flujoCaja.append(capitalInicial)
 
     ax.plot(arrayIteraciones, flujoCaja, label="Flujo de caja")
     ax2.plot(arrayIteraciones, frGanancia, label="fr de Ganancia")
-    
 
-ax.plot(arrayIteraciones, [0]*iteraciones, label="Capital inicial")
+
+ax.axhline(y=0, color='b', linestyle='dotted')
 
 ax.set_xlabel('N° (Número de tiradas)')
 ax.set_ylabel('Cantidad de capital')

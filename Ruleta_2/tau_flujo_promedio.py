@@ -16,7 +16,7 @@ for i in range(n):
     fl_prom.append(np.average(arr))
 
 ax.plot(i, fl_prom, label="Flujo de caja promedio")
-ax.plot(i, [0]*n, label="capital inicial")
+ax.axhline(y=0, color='b', linestyle='dotted')
 ax.set_xlabel('N° (Número de tiradas)')
 ax.set_ylabel('Cantidad de capital')
 ax.set_title('Flujo de capital promedio')

@@ -21,10 +21,9 @@ def run_martingala(n, capital_incial=None):
     flujos_en_caja = []
 
     for i in range(n):
-        if (capital_incial is not None and capital_incial+flujo_caja_acumulado == 0):
-            flujos_en_caja.append(flujo_caja_acumulado)
-            frecuencias_relativas_apuestas_favorables.append(fa/(i+1))
-            continue  # sin plata
+        if (capital_incial is not None and capital_incial+flujo_caja_acumulado <= 0):
+            iteraciones = range(1, len(flujos_en_caja)+1)
+            break  # sin plata
 
         flujo_caja_en_tirada = 0
 
@@ -34,6 +33,8 @@ def run_martingala(n, capital_incial=None):
 
         if (flujo_caja_en_tirada < 0):
             monto *= 2
+            if (capital_incial is not None and capital_incial+flujo_caja_acumulado < monto):
+                monto = capital_incial+flujo_caja_acumulado
         else:
             monto = MONTO_INICIAL
 
@@ -43,7 +44,7 @@ def run_martingala(n, capital_incial=None):
         flujo_caja_acumulado += flujo_caja_en_tirada
         if (flujo_caja_en_tirada > 0):
             fa += 1
-        frecuencias_relativas_apuestas_favorables.append(fa/n)
+        frecuencias_relativas_apuestas_favorables.append(fa/(i+1))
         flujos_en_caja.append(flujo_caja_acumulado)
 
     pn = frecuencias_relativas_apuestas_favorables[-1]  # ultimo elemento

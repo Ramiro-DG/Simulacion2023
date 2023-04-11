@@ -1,7 +1,7 @@
 from tau_strategy import run_todo_a_uno
 import matplotlib.pyplot as plt
 
-n = 2000
+n = 1_500
 
 i, fr, _, conf = run_todo_a_uno(n)
 

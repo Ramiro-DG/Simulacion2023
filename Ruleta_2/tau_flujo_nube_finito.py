@@ -10,9 +10,10 @@ fig, ax = plt.subplots(figsize=(7, 4), constrained_layout=True)
 for i in range(runs):
     i, _, fl, _ = run_todo_a_uno(n, dinero_inicial)
     print('aproximacion final :', fl[-1])
+    print('largos: ', len(i), len(fl))
     ax.plot(i, fl, label="Flujo de caja")
 
-ax.plot(i, [0]*n, label="capital inicial")
+ax.axhline(y=0, color='b', linestyle='dotted')
 ax.set_xlabel('N° (Número de tiradas)')
 ax.set_ylabel('Cantidad de capital')
 ax.set_title('Flujo de capital')
