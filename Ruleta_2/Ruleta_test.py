@@ -51,6 +51,21 @@ r = Ruleta(lambda: 3)
 r.apostar_color(Color.NEGRO, 10)
 assert_condition(r.tirar() == 0, test_desc)
 
+test_desc= 'apuesto $10 a docena 2, deberia ganar $30'
+r = Ruleta(lambda: 3)
+r.apostar_docena(1,10)
+assert_condition(r.tirar() == 30, test_desc)
+
+test_desc= 'apuesto $10 a docena 2 y $10 al rojo, deberia ganar $50'
+r = Ruleta(lambda: 3)
+r.apostar_docena(1,10)
+r.apostar_color(Color.ROJO,10)
+assert_condition(r.tirar() == 50, test_desc)
+
+test_desc= 'apuesto $10 a columna 1, deberia ganar $30'
+r = Ruleta(lambda: 1)
+r.apostar_columna(1,10)
+assert_condition(r.tirar() == 30, test_desc)
 
 test_desc = 'si en la segunda tirada no apuesta no deberia ganar nada'
 r = Ruleta(lambda: 15)
