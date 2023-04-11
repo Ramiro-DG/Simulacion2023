@@ -8,7 +8,7 @@ from scipy.stats import norm
 En cada tirada apostamos $100 al 0, simple y facil
 '''
 
-monto = 10
+monto = 5
 error = 0.01
 z_objetivo = 1.96  # para el 95% de confianza
 
