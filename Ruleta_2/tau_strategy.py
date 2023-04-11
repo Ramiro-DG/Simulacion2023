@@ -16,13 +16,17 @@ r = Ruleta(lambda: random.randint(0, 36))
 numeroElegido = 0
 
 
-def run_todo_a_uno(n):
+def run_todo_a_uno(n, capital_incial=None):
     flujo_caja_acumulado = 0
     fa = 0
     iteraciones = range(1, n+1)
     frecuencias_relativas_apuestas_favorables = []
     flujos_en_caja = []
     for i in range(n):
+        if (capital_incial is not None and capital_incial+flujo_caja_acumulado == 0):
+            flujos_en_caja.append(flujo_caja_acumulado)
+            frecuencias_relativas_apuestas_favorables.append(fa/n)
+            continue  # sin plata
         flujo_caja_en_tirada = 0
         flujo_caja_en_tirada -= monto
         r.apostar_numero(numeroElegido, monto)
@@ -34,7 +38,9 @@ def run_todo_a_uno(n):
         flujos_en_caja.append(flujo_caja_acumulado)
 
     pn = frecuencias_relativas_apuestas_favorables[-1]  # ultimo elemento
-    z = error*math.sqrt(n/pn*(1-pn))
-    conf_level_fr = 1 - 2*norm.cdf(-z)
-
+    if (pn != 0):
+        z = error*math.sqrt(n/pn*(1-pn))
+        conf_level_fr = 1 - 2*norm.cdf(-z)
+    else:
+        conf_level_fr = -1
     return iteraciones, frecuencias_relativas_apuestas_favorables, flujos_en_caja, conf_level_fr
