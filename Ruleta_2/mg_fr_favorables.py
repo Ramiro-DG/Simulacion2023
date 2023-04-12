@@ -1,18 +1,15 @@
 from martin_gala_strategy import run_martingala
 import matplotlib.pyplot as plt
 
-n = 40_000
+n = 100000
 
-i, fr, _, conf = run_martingala(n)
-
-print('nivel de confianza :', conf)
-print('aproximacion final :', fr[-1])
+fr, _ = run_martingala(n)
 
 fig, ax = plt.subplots()
-bar_labels = ['blue']*n
-bar_colors = ['tab:blue']*n
-ax.bar(i, fr, label=bar_labels, color=bar_colors)
+ax.set_xlim(0, 20)
+plt.xticks(range(1, 20, 1))  # Set the step size to 1
+
+ax.stem(list(fr.keys()), list(fr.values()))
 ax.set_ylabel('Frecuencia relativa')
-ax.set_title(
-    'Frecuencia relativa de obtener la apuesta favorable segun n - Martingala')
+ax.set_title('Fr de ganar con dinero infinito segun n - Martingala')
 plt.show()
