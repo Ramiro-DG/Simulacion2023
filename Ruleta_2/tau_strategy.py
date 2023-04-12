@@ -18,28 +18,24 @@ numeroElegido = 0
 
 def run_todo_a_uno(n, capital_incial=None):
     flujo_caja_acumulado = 0
-    fa = 0
-    iteraciones = range(1, n+1)
-    frecuencias_relativas_apuestas_favorables = []
+    iter = range(1, n+1)
     flujos_en_caja = []
-    for i in range(n):
+    frs_veces_para_ganar = [0]*n
+    contador_veces_perdidas=0
+    for _ in range(n):
         if (capital_incial is not None and capital_incial+flujo_caja_acumulado < 0):
-            iteraciones = range(1, len(flujos_en_caja)+1)
+            iter = range(1, len(flujos_en_caja)+1)
             break  # sin plata
         flujo_caja_en_tirada = 0
         flujo_caja_en_tirada -= monto
         r.apostar_numero(numeroElegido, monto)
         flujo_caja_en_tirada += r.tirar()
         flujo_caja_acumulado += flujo_caja_en_tirada
-        if (flujo_caja_en_tirada > 0):
-            fa += 1
-        frecuencias_relativas_apuestas_favorables.append(fa/(i+1))
-        flujos_en_caja.append(flujo_caja_acumulado)
-
-    pn = frecuencias_relativas_apuestas_favorables[-1]  # ultimo elemento
-    if (pn != 0):
-        z = error*math.sqrt(n/pn*(1-pn))
-        conf_level_fr = 1 - 2*norm.cdf(-z)
-    else:
-        conf_level_fr = -1
-    return iteraciones, frecuencias_relativas_apuestas_favorables, flujos_en_caja, conf_level_fr
+        if(flujo_caja_en_tirada<0):
+            contador_veces_perdidas+=1
+        else:
+            frs_veces_para_ganar[contador_veces_perdidas+1]+=1
+            contador_veces_perdidas=0
+    suma=sum(frs_veces_para_ganar)
+    frs_veces_para_ganar=list(map(lambda x:x/suma, frs_veces_para_ganar) )
+    return iter, frs_veces_para_ganar, flujos_en_caja

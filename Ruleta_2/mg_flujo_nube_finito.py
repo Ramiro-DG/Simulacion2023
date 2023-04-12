@@ -7,7 +7,7 @@ dinero_inicial = 1000
 
 fig, ax = plt.subplots(figsize=(7, 4), constrained_layout=True)
 
-for i in range(runs):
+for _ in range(runs):
     i, _, fl, _ = run_martingala(n, dinero_inicial)
     print('aproximacion final :', fl[-1])
     ax.plot(i, fl, label="Flujo de caja")
