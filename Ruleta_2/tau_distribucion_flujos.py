@@ -3,21 +3,28 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 import numpy as np
 
-n = 5000
-runs = 10000
+n = 500
+runs = 30000
 
 
 fls = []
-for i in range(runs):
-    i, _, fl, _ = run_todo_a_uno(n)
-    fls.append(fl[-1])
+for _ in range(runs):
+    _, fl = run_todo_a_uno(n)
+    fls.append(fl[n])
 
 
-n_bins = int((max(fls)-min(fls))/200)
-print(n_bins)
 fig, ax = plt.subplots(1, 1)
 
-n, bins, _ = ax.hist(fls, bins=n_bins, density=True)
+fl_no_repetidos = sorted(list(set(fls)))
+fa = {}
+for value in fl_no_repetidos:
+    fa[value] = 0
+
+for value in fls:
+    fa[value] += 1
+
+
+ax.stem(list(fa.keys()), list(fa.values()))
 
 mu = np.average(fls)
 sigma = np.std(fls)
