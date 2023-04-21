@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import GCL
+import mcm
 
 
 def bitmap_of_array(arr, title):
@@ -38,3 +39,5 @@ arr = []
 for _ in range(lado_bitmap**2):
     arr.append(random.random())
 bitmap_of_array(arr, 'python rand')
+
+bitmap_of_array(mcm.mid_square(6568,lado_bitmap**2), "MCM")

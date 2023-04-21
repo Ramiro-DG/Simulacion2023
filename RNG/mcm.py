@@ -1,3 +1,5 @@
+import numpy as np
+
 def seed_generator(number:int)->int:
     if not isinstance(number, int):
         raise ValueError("Input must be an integer.")
@@ -23,9 +25,9 @@ def mid_square(initial_seed:int ,num_iterations:int):
     if(values[i]==0):break;
     values[i+1]=pow(seeds[i],2);
     seeds[i+1]=seed_generator(values[i+1]);  
-  return values
+  return np.divide(values,100_000_000)
 
-print(mid_square(1232,1000000))
+print(mid_square(1232,1000))
 
 
   
