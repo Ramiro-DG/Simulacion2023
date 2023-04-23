@@ -20,14 +20,26 @@ def mid_square(initial_seed:int ,num_iterations:int):
   seeds = [0 for _ in range(num_iterations)]
   values[0] = pow(initial_seed,2)
   seeds[0]= seed_generator(values[0]);
-  print(seeds[0]);
   for i in range(num_iterations-1):
     if(values[i]==0):break;
     values[i+1]=pow(seeds[i],2);
     seeds[i+1]=seed_generator(values[i+1]);  
   return np.divide(values,100_000_000)
 
-print(mid_square(1232,1000))
+def mid_square_no_div(initial_seed:int ,num_iterations:int):
+  if(len(str(initial_seed)) <4 ):
+    raise ValueError("Seed value must have at least 4 digits.");
+  values = [0 for _ in range(num_iterations)]
+  seeds = [0 for _ in range(num_iterations)]
+  values[0] = pow(initial_seed,2)
+  seeds[0]= seed_generator(values[0]);
+  for i in range(num_iterations-1):
+    if(values[i]==0):break;
+    values[i+1]=pow(seeds[i],2);
+    seeds[i+1]=seed_generator(values[i+1]);  
+  return values
+
+# print(mid_square(1232,1000))
 
 
   

@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import GCL
 import mcm
 
+n=1000
+
 # Test GCL
 sumas = []
 window= 50
@@ -14,7 +16,7 @@ step= 20
 inf=0
 sup=50
 seed=742895
-seq = GCL.generate_sequence_numbers(1000, seed)
+seq = GCL.generate_sequence_numbers(n, seed)
 while(sup<=1000):
     acumulador = 0
     for n in range(inf, sup+1):
@@ -25,12 +27,14 @@ while(sup<=1000):
 sumas.sort()
 media = np.average(sumas)
 std=np.std(sumas)
+z= (max(sumas)-media)/std
 plt.plot(sumas, scipy.stats.norm.pdf(sumas, media, std), color='red', linewidth=3 )
 plt.title('Test superposicion de la suma - Generador GCL')
 plt.show()
+print('z', z)
 
 
-## Test MCM
+# Test MCM
 sumas = []
 window= 50
 step= 20
@@ -48,6 +52,10 @@ while(sup<=1000):
 sumas.sort()
 media = np.average(sumas)
 std=np.std(sumas)
+z= (max(sumas)-media)/std
 plt.plot(sumas, scipy.stats.norm.pdf(sumas, media, std), color='red', linewidth=3 )
 plt.title('Test superposicion de la suma - Generador MCM')
 plt.show()
+
+
+## Para concluir que la distrubución es uniforme habrá que comprobar si el valor de Z está entre [-1.95, 1.95]
