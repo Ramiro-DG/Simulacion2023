@@ -2,11 +2,9 @@ import math
 import random
 import numpy as np
 import matplotlib.pyplot as plt
-
 import GCL
 import mcm
 import randu
-
 
 def bitmap_of_array(arr, title):
     matrix = []
@@ -29,18 +27,21 @@ def bitmap_of_array(arr, title):
     plt.title(title)
     plt.show()
 
-
 # ----------------------------------------------------------------
 
 lado_bitmap = 1000
 
+# Test GCL
 bitmap_of_array(GCL.generate_sequence_numbers(lado_bitmap**2, 742895), 'GCL')
 
+# Test MCM
+bitmap_of_array(mcm.mid_square(6568, lado_bitmap**2), "MCM")
+
+# Test Randu
 bitmap_of_array(randu.randu(1253, lado_bitmap**2), 'Randu')
 
+# Test Python
 arr = []
 for _ in range(lado_bitmap**2):
     arr.append(random.random())
 bitmap_of_array(arr, 'Generador de python3')
-
-bitmap_of_array(mcm.mid_square(6568, lado_bitmap**2), "MCM")
