@@ -24,11 +24,11 @@ seq_gcl = GCL.generate_sequence_numbers(1000, 742895)
 autocorrelation_test(seq_gcl, "GCL")
 
 # Test MCM
-seq_mcm = mcm.mid_square(6568, 1200)
+seq_mcm = mcm.mid_square(6568, 1000)
 autocorrelation_test(seq_mcm, "MCM")
 
 # Test Randu
-seq_randu = randu.randu(1253,1000)
+seq_randu = randu.randu(1253, 1000)
 autocorrelation_test(seq_randu, "Randu")
 
 # Test Python
