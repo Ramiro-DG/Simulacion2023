@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.stats import chisquare
+import matplotlib.pyplot as plt
 import GCL
 import mcm
 import randu
@@ -32,3 +33,16 @@ for _ in range(1000):
     seq_python.append(random.random())
 p_python = chi_squared_test(seq_python, 10)
 print('Valor de p para secuencia generada con Python3: ', p_python)
+
+
+# Plot
+labels = ['GCL', 'MCM', 'Randu', 'Python3']
+p_values = [p_gcl, p_mcm, p_randu, p_python]
+
+for i, v in enumerate(p_values):
+    plt.text(i-0.1, v+0.01, str(round(v, 4)), fontsize=8)
+
+plt.bar(labels, p_values)
+plt.ylabel('Valor de p')
+plt.title('Test de chi cuadrado')
+plt.show()
