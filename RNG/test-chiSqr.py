@@ -26,7 +26,7 @@ seq_randu = randu.randu(1253,1000);
 p_randu = chi_squared_test(seq_randu, 10)
 print('Valor de p para secuencia generada con Randu: ', p_randu)
 
-# Test Randu
+# Test Python
 seq_python = [];
 for _ in range(1000):
     seq_python.append(random.random())
