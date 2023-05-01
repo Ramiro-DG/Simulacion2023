@@ -2,7 +2,7 @@ import os
 import distribucion_uniforme as du
 import distribucion_exponencial as de
 # import distribucion_gamma as dg
-# import distribucion_normal as dn
+import distribucion_normal as dn
 # import distribucion_pascal as dpa
 # import distribucion_binomial as db
 # import distribucion_hipergeometrica as dhg
@@ -44,7 +44,10 @@ while True:
         dg.gamma()
 
     elif opcion == 4:
-        dn.normal()
+        media = float(input("Ingrese el valor de la media: "))
+        sigma = float(input("Ingrese el valor de sigma: "))
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        dn.normal(media, sigma, size)
 
     elif opcion == 5:
         dpa.pascal()
