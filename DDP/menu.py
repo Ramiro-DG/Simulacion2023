@@ -1,13 +1,16 @@
 import os
-import distribucion_uniforme as du
-import distribucion_exponencial as de
-# import distribucion_gamma as dg
-import distribucion_normal as dn
-# import distribucion_pascal as dpa
-# import distribucion_binomial as db
-# import distribucion_hipergeometrica as dhg
-# import distribucion_poisson as dpo
-# import distribucion_empirica_discreta as ded
+import metodoTransfInversa.distribucion_uniforme as ti_du
+import metodoTransfInversa.distribucion_exponencial as ti_de
+import metodoTransfInversa.distribucion_normal as ti_dn
+import metodoRechazo.exponencial as r_de
+import metodoRechazo.poisson as r_dp
+import metodoRechazo.normal as r_dn
+import metodoRechazo.binomial as r_db
+import metodoRechazo.uniforme as r_du
+import metodoRechazo.gamma as r_dg
+import metodoRechazo.pascal as r_pas
+import metodoRechazo.hipergeometrica as r_dh
+import metodoRechazo.empiricaDiscreta as r_ded
 
 while True:
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -32,37 +35,63 @@ while True:
         a = float(input("Ingrese el valor de a: "))
         b = float(input("Ingrese el valor de b: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
-
-        du.uniforme(a, b, size)
-
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("Métodos:")
+        print("1. Transformada Inversa")
+        print("2. Rechazo y aceptación")
+        method = int(input("Ingrese método a aplicar: "))
+        if method == 1:
+            ti_du.uniforme(a, b, size)
+        elif method ==2:
+            r_du.uniforme()
+    
     elif opcion == 2:
         lam = float(input("Ingrese valor de lamda: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
-        de.exponencial(lam, size)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("Métodos:")
+        print("1. Transformada Inversa")
+        print("2. Rechazo y aceptación")
+        method = int(input("Ingrese método a aplicar: "))
+        if method == 1:
+            ti_de.exponencial(lam, size)
+        if method == 2:
+            r_de.exponencial(lam, size)
+            
 
     elif opcion == 3:
-        dg.gamma()
+        r_dg.gamma()
 
     elif opcion == 4:
         media = float(input("Ingrese el valor de la media: "))
         sigma = float(input("Ingrese el valor de sigma: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
-        dn.normal(media, sigma, size)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("Métodos:")
+        print("1. Transformada Inversa")
+        print("2. Rechazo y aceptación")
+        method = int(input("Ingrese método a aplicar: "))
+        if method == 1:
+            ti_dn.normal(media, sigma, size)
+        if method == 2:
+            r_dn.normal()
 
     elif opcion == 5:
-        dpa.pascal()
+        r_pas.pascal()
 
     elif opcion == 6:
-        db.binomial()
+        r_db.binomial()
 
     elif opcion == 7:
-        dhg.hipergeometrica()
+        r_dh.hipergeometrica()
 
     elif opcion == 8:
-        dpo.distribucion_poisson()
+        lam = float(input("Ingrese valor de lamda: "))
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        r_dp.poisson(lam, size)
 
     elif opcion == 9:
-        ded.empirica_discreta()
+        r_ded.empirica_discreta()
 
     elif opcion == 10:
         break
