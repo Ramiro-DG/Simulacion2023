@@ -59,7 +59,17 @@ while True:
             r_de.exponencial(lam, size)
 
     elif opcion == 3:
-        r_dg.gamma()
+        k = float(input("Ingrese valor de k: "))
+        theta = float(input("Ingrese valor de theta: "))
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        print("Métodos:")
+        print("1. Transformada Inversa")
+        print("2. Rechazo y aceptación")
+        method = int(input("Ingrese método a aplicar: "))
+        if method == 1:
+            print('mmmmmmm mepa que no impementaron esto')
+        if method == 2:
+            r_dg.gamma(k, theta, size)
 
     elif opcion == 4:
         media = float(input("Ingrese el valor de la media: "))
