@@ -42,9 +42,9 @@ while True:
         method = int(input("Ingrese método a aplicar: "))
         if method == 1:
             ti_du.uniforme(a, b, size)
-        elif method ==2:
+        elif method == 2:
             r_du.uniforme()
-    
+
     elif opcion == 2:
         lam = float(input("Ingrese valor de lamda: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
@@ -57,7 +57,6 @@ while True:
             ti_de.exponencial(lam, size)
         if method == 2:
             r_de.exponencial(lam, size)
-            
 
     elif opcion == 3:
         r_dg.gamma()
@@ -74,7 +73,7 @@ while True:
         if method == 1:
             ti_dn.normal(media, sigma, size)
         if method == 2:
-            r_dn.normal()
+            r_dn.normal(media, sigma, size)
 
     elif opcion == 5:
         r_pas.pascal()
