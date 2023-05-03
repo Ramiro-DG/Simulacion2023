@@ -89,6 +89,19 @@ while True:
         r_pas.pascal()
 
     elif opcion == 6:
+        n = int(input("Ingrese el valor de la n: "))
+        p = float(input("Ingrese el valor de p: "))
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("Métodos:")
+        print("1. Transformada Inversa")
+        print("2. Rechazo y aceptación")
+        method = int(input("Ingrese método a aplicar: "))
+        if method == 1:
+            print('nop')
+            #ti_db.biomial(n, p, size)
+        if method == 2:
+            r_db.binomial(n, p, size)
         r_db.binomial()
 
     elif opcion == 7:
