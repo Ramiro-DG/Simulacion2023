@@ -6,7 +6,7 @@ import numpy as np
 def exponencial(lam, size):
     name = "Exponencial"
     min = 0
-    max = 20
+    max = (-1 / lam) * np.log(1 - 0.999)
     pdf = lambda x: lam * np.exp(-lam * x)
     techo = lam
 

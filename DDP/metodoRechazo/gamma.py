@@ -14,7 +14,7 @@ def gamma_pdf(k, theta):
 def gamma(k, theta, size):
     name = "Gamma"
     min = 0
-    max = 10
+    max = k * theta + 2 * k * theta**2  #aprox con la regla empirica
     pdf = gamma_pdf(k, theta)
     techo = pdf((k - 1) * theta)
 
