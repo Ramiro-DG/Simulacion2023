@@ -26,7 +26,7 @@ def gamma(k, theta, size):
     plt.hist(aceptados,
              bins=30,
              density=True,
-             label="Exponencial por metodo rechazo")
+             label="Gamma por método rechazo")
 
     # Funcion teorica
     x = np.linspace(min, max, size)
