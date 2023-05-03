@@ -1,5 +1,4 @@
 import math
-import scipy
 from Shared import metodo_rechazo as mr
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,27 +12,29 @@ def gamma_pdf(k, theta):
 
 
 def gamma(k, theta, size):
+    name = "Gamma"
     min = 0
     max = 10
     pdf = gamma_pdf(k, theta)
+    techo = pdf((k - 1) * theta)
 
-    aceptados = mr.metodo_rechazo(pdf_estudio=pdf,
-                                  techo=pdf((k - 1) * theta),
-                                  min=min,
-                                  max=max,
-                                  size=size)
+    accepted = mr.metodo_rechazo(pdf_estudio=pdf,
+                                 techo=techo,
+                                 min=min,
+                                 max=max,
+                                 size=size)
 
-    plt.hist(aceptados,
+    plt.hist(accepted,
              bins=30,
              density=True,
-             label="Gamma por método rechazo")
+             label=name + " por método rechazo")
 
     # Funcion teorica
     x = np.linspace(min, max, size)
     y = pdf(x)
-    plt.plot(x, y, color='red', label='Gamma teorica')
+    plt.plot(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución Gamma')
+    plt.title('Distribución ' + name)
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

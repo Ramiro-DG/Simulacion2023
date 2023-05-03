@@ -4,27 +4,29 @@ import numpy as np
 
 
 def exponencial(lam, size):
+    name = "Exponencial"
     min = 0
     max = 20
     pdf = lambda x: lam * np.exp(-lam * x)
+    techo = lam
 
-    aceptados = mr.metodo_rechazo(pdf_estudio=pdf,
-                                  techo=lam,
-                                  min=min,
-                                  max=max,
-                                  size=size)
+    accepted = mr.metodo_rechazo(pdf_estudio=pdf,
+                                 techo=techo,
+                                 min=min,
+                                 max=max,
+                                 size=size)
 
-    plt.hist(aceptados,
+    plt.hist(accepted,
              bins=30,
              density=True,
-             label="Exponencial por metodo rechazo")
+             label=name + " por método rechazo")
 
     # Funcion teorica
     x = np.linspace(min, max, size)
     y = pdf(x)
-    plt.plot(x, y, color='red', label='Exponencial teorica')
+    plt.plot(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución Exponencial')
+    plt.title('Distribución ' + name)
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

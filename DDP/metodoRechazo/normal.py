@@ -2,6 +2,10 @@ from Shared import metodo_rechazo as mr
 import matplotlib.pyplot as plt
 import numpy as np
 
+from Shared import metodo_rechazo as mr
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 def normal_pdf(mean, sigma):
     coeficient = 1 / (sigma * np.sqrt(2 * np.pi))
@@ -10,27 +14,29 @@ def normal_pdf(mean, sigma):
 
 
 def normal(mean, sigma, size):
+    name = "Normal"
     min = mean - 3 * sigma
     max = mean + 3 * sigma
     pdf = normal_pdf(mean, sigma)
+    techo = pdf(mean)
 
-    aceptados = mr.metodo_rechazo(pdf_estudio=pdf,
-                                  techo=pdf(mean),
-                                  min=min,
-                                  max=max,
-                                  size=size)
+    accepted = mr.metodo_rechazo(pdf_estudio=pdf,
+                                 techo=techo,
+                                 min=min,
+                                 max=max,
+                                 size=size)
 
-    plt.hist(aceptados,
+    plt.hist(accepted,
              bins=30,
              density=True,
-             label="Normal por método rechazo")
+             label=name + " por método rechazo")
 
     # Funcion teorica
     x = np.linspace(min, max, size)
     y = pdf(x)
-    plt.plot(x, y, color='red', label='Normal teorica')
+    plt.plot(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución Normal')
+    plt.title('Distribución ' + name)
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()
