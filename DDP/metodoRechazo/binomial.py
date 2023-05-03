@@ -5,10 +5,10 @@ import numpy as np
 
 
 def mdf_binomial(n, p):
-    f1 = lambda x: math.factorial(n)
-    f2 = lambda x: 1 / (math.factorial(int(x)) * math.factorial(int(n - x)))
-    f3 = lambda x: (p**x) * ((1 - p)**(n - x))
-    return lambda x: f1(x) * f2(x) * f3(x)
+    factorial = lambda x: math.factorial(int(x))
+    f1 = lambda x: factorial(n) / (factorial(x) * factorial(n - x))
+    f2 = lambda x: (p**x) * ((1 - p)**(n - x))
+    return lambda x: f1(x) * f2(x)
 
 
 def binomial(n, p, size):
@@ -36,7 +36,6 @@ def binomial(n, p, size):
     # Funcion teorica
     x = range(0, n)
     y = list(map(lambda k: mdf(k), x))
-    print(y)
     plt.scatter(x, y, color='red', label=name + ' teorica')
 
     plt.title('Distribución ' + name)

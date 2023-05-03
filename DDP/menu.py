@@ -102,7 +102,6 @@ while True:
             #ti_db.biomial(n, p, size)
         if method == 2:
             r_db.binomial(n, p, size)
-        r_db.binomial()
 
     elif opcion == 7:
         r_dh.hipergeometrica()
