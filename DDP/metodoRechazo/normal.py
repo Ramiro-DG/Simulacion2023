@@ -2,11 +2,6 @@ from Shared import metodo_rechazo as mr
 import matplotlib.pyplot as plt
 import numpy as np
 
-from Shared import metodo_rechazo as mr
-import matplotlib.pyplot as plt
-import numpy as np
-
-
 def normal_pdf(mean, sigma):
     coeficient = 1 / (sigma * np.sqrt(2 * np.pi))
     index = lambda x: -0.5 * ((x - mean) / sigma)**2
