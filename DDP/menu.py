@@ -16,16 +16,16 @@ while True:
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print("Menú:")
-    print("1. UNIFORME")
-    print("2. EXPONENCIAL")
+    print("1. UNIFORME (dos metodos)")
+    print("2. EXPONENCIAL (dos metodos)")
     print("3. GAMMA")
-    print("4. NORMAL")
+    print("4. NORMAL (dos metodos)")
     print("5. PASCAL")
     print("6. BINOMIAL")
     print("7. HIPERGEOMÉTRICA")
     print("8. POISSON")
     print("9. EMPÍRICA DISCRETA")
-    print("10. Salir")
+    print("0. Salir")
 
     opcion = int(input("Ingrese el número de la opción deseada: "))
 
@@ -62,14 +62,7 @@ while True:
         k = float(input("Ingrese valor de k: "))
         theta = float(input("Ingrese valor de theta: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
-        print("Métodos:")
-        print("1. Transformada Inversa")
-        print("2. Rechazo y aceptación")
-        method = int(input("Ingrese método a aplicar: "))
-        if method == 1:
-            print('mmmmmmm mepa que no impementaron esto')
-        if method == 2:
-            r_dg.gamma(k, theta, size)
+        r_dg.gamma(k, theta, size)
 
     elif opcion == 4:
         media = float(input("Ingrese el valor de la media: "))
@@ -92,19 +85,14 @@ while True:
         n = int(input("Ingrese el valor de la n: "))
         p = float(input("Ingrese el valor de p: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print("Métodos:")
-        print("1. Transformada Inversa")
-        print("2. Rechazo y aceptación")
-        method = int(input("Ingrese método a aplicar: "))
-        if method == 1:
-            print('nop')
-            #ti_db.biomial(n, p, size)
-        if method == 2:
-            r_db.binomial(n, p, size)
+        r_db.binomial(n, p, size)
 
     elif opcion == 7:
-        r_dh.hipergeometrica()
+        N = int(input("Ingrese N: "))
+        K = int(input("Ingrese K: "))
+        n = int(input("Ingrese n: "))
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        r_dh.hipergeometrica(N, K, n, size)
 
     elif opcion == 8:
         lam = float(input("Ingrese valor de lamda: "))
@@ -112,9 +100,10 @@ while True:
         r_dp.poisson(lam, size)
 
     elif opcion == 9:
-        r_ded.empirica_discreta()
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        r_ded.empirica_discreta(size)
 
-    elif opcion == 10:
+    elif opcion == 0:
         break
 
     else:
