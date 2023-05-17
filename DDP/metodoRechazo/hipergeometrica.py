@@ -1,3 +1,5 @@
+from math import comb
+import math
 import scipy
 from Shared import metodo_rechazo as mr
 import matplotlib.pyplot as plt
@@ -11,19 +13,20 @@ def mdf_hiper_geometrica(N, K, n):
         raise ValueError('argumento debe ser mayor que cero')
     if (n > N or K > N):
         raise ValueError('n y K no pueden execer N')
-    f1 = lambda x: scipy.special.comb(K, x)
-    f2 = lambda x: scipy.special.comb(N - K, n - x)
-    f3 = lambda x: scipy.special.comb(K, x)
-    return lambda x: (f1(x) * f2(x) / f3(x))
+
+    numerator = lambda x: comb(K, x) * comb(N - K, n - x)
+    denominator = comb(N, n)
+    return lambda x: numerator(x) / denominator
 
 
 def hipergeometrica(N, K, n, size):
     name = "Hipergeometrica"
-    min = -20
-    max = 20
+    mean = int(n * (K / N))
+    sigma = int(math.sqrt(n * (K / N) * ((N - K) / N) * ((N - n) / (N - 1))))
+    min = 0
+    max = mean + 4 * sigma
     mdf = mdf_hiper_geometrica(N, K, n)
-    techo = mdf(0)
-    print('den ', scipy.special.comb(K, 0))
+    techo = mdf(mean)
 
     accepted = mr.metodo_rechazo_dicreto(mpf_estudio=mdf,
                                          techo=techo,
