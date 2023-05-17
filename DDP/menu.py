@@ -79,7 +79,10 @@ while True:
             r_dn.normal(media, sigma, size)
 
     elif opcion == 5:
-        r_pas.pascal()
+        r = int(input("Ingrese el valor de la r (>0): "))
+        p = float(input("Ingrese el valor de la p (entre 0 y 1): "))
+        size = int(input("Ingrese la cantidad de valores a generar: "))
+        r_pas.pascal(r, p, size)
 
     elif opcion == 6:
         n = int(input("Ingrese el valor de la n: "))
@@ -104,6 +107,7 @@ while True:
         r_ded.empirica_discreta(size)
 
     elif opcion == 0:
+        print('adios')
         break
 
     else:
