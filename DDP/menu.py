@@ -43,7 +43,7 @@ while True:
         if method == 1:
             ti_du.uniforme(a, b, size)
         elif method == 2:
-            r_du.uniforme()
+            r_du.uniforme(a, b, size)
 
     elif opcion == 2:
         lam = float(input("Ingrese valor de lamda: "))
