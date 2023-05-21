@@ -49,7 +49,7 @@ def hipergeometrica(N, K, n, size):
     plt.scatter(x, y, color='red', label=name + ' teorica')
     plt.xlim(min, max)
 
-    plt.title('Distribución ' + name)
+    plt.title('Distribución ' + name + f" - size={size} N={N} k={k} n={n}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

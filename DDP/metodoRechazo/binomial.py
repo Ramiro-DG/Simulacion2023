@@ -38,7 +38,7 @@ def binomial(n, p, size):
     y = list(map(lambda k: mdf(k), x))
     plt.scatter(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución ' + name)
+    plt.title('Distribución ' + name+ f" - size={size} n={n} p={p}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

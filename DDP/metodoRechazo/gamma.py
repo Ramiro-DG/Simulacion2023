@@ -34,7 +34,7 @@ def gamma(k, theta, size):
     y = pdf(x)
     plt.plot(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución ' + name)
+    plt.title('Distribución ' + name + f" - size={size} theta={theta} k={k}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

@@ -30,7 +30,7 @@ def uniforme(a, b, size):
     y = [pdf(x)] * len(x)
     plt.plot(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución ' + name)
+    plt.title('Distribución ' + name + f" - size={size} a={a} b={b}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

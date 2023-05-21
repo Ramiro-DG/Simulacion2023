@@ -26,7 +26,7 @@ def exponencial(lam, size):
     y = pdf(x)
     plt.plot(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución ' + name)
+    plt.title('Distribución ' + name + f" - size={size} lamba={lam}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

@@ -35,7 +35,7 @@ def pascal(r, p, size):
     y = list(map(lambda k: mdf(k), x))
     plt.scatter(x, y, color='red', label=name + ' teorica')
 
-    plt.title('Distribución ' + name)
+    plt.title('Distribución ' + name + f" - size={size} r={r} p={p}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()

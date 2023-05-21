@@ -34,7 +34,7 @@ def poisson(lam, size):
     y = (math.exp(-lam)*pow(lam, x))/(scipy.special.factorial(x))
     ax.plot(x, y, 'r-', linewidth=2)
     plt.plot(x, y, color='red', label='Poisson teórica')
-    plt.title('Distribución Poisson')
+    plt.title('Distribución Poisson' + f" - size={size} lamda={lam}")
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.legend()
