@@ -1,7 +1,7 @@
 import math
 import random
 
-Q_LIMIT = 100   # Límite en la longitud de la cola.
+Q_LIMIT = 5   # Límite en la longitud de la cola.
 BUSY = 1    # Indica si el servidor esté ocupado
 IDLE = 0    # Indica si el servidor está inactivo
 
@@ -15,8 +15,7 @@ def initialize():
     global sim_time, server_status, num_in_q, time_last_event, num_custs_delayed, total_of_delays, area_num_in_q, area_server_status
     global time_next_event
     global num_in_queue_counts, num_in_system, total_time_in_system
-
-    global area_num_in_system
+    global area_num_in_system, num_rejections
     
     # Inicializa el reloj de simulación
     sim_time = 0.0
@@ -42,7 +41,7 @@ def initialize():
     num_in_system = 0                               # Número de clientes en el sistema
     area_num_in_system = 0.0                        # Área debajo de la función de clientes en el sistema
     total_time_in_system = 0.0                      # Tiempo total en el sistema
-
+    num_rejections = 0
 
 def timing():
     global next_event_type, sim_time
@@ -67,7 +66,7 @@ def timing():
 
 def arrive():
     global num_in_q, server_status, total_of_delays, num_custs_delayed, time_next_event
-    global num_in_system
+    global num_in_system, num_rejections
     
     # Programa la siguiente llegada
     time_next_event[1] = sim_time + expon(mean_interarrival)
@@ -83,8 +82,13 @@ def arrive():
         
         # Comprueba si la cola está desbordada. Si lo está, finaliza la simulación.
         if num_in_q > Q_LIMIT:
-            print("\nOverflow of the array time_arrival at time", sim_time)
-            exit(2)
+            # print("\nOverflow of the array time_arrival at time", sim_time)
+            # exit(2)
+
+            # Suponiendo que en vez de finalizar la simulación, simplemente se
+            # rechaza al cliente y se continúa con la misma cantidad que ya estaba:
+            num_in_q -= 1
+            num_rejections += 1
         
         # Hay espacio en la cola ya que no está desbordada. Luego, se almacena la hora de
         # llegada del cliente que llega al final de time_arrival
@@ -143,6 +147,7 @@ def depart():
 
 def report():
     global total_of_delays, num_custs_delayed, area_num_in_q, sim_time, area_server_status
+    global num_rejections, num_delays_required
     
     # Calcula y devuelve estimaciones de medidas deseadas de rendimiento.
     print("\033[4m" + "Performance measures" + "\033[0m")
@@ -159,6 +164,10 @@ def report():
         probability = num_in_queue_counts[n] / sim_time
         if (round(probability, 3) != 0.0):
             print(f"* n = {n}: {round(probability*100, 2)}%")
+
+    # Imprime la probabilidad de denegación de servicio}
+    print("\nRejected customers:", num_rejections)
+    print("Rejection probability:", round(num_rejections * 100 / num_delays_required, 2), "%")
 
 
 def update_time_avg_stats():
@@ -220,6 +229,5 @@ def main():
 main()
 
 # Faltaría:
-# - Probabilidad de denegación de servicio (cola finita de tamaño: 0, 2, 5, 10, 50).
 #  + Variar (al menos) las tasas de arribo: 25%, 50%, 75%, 100%, 125% con respecto a la tasa de servicio.
 #  + Mínimo 10 corridas por cada experimento.
