@@ -146,14 +146,14 @@ def report():
     
     # Calcula y devuelve estimaciones de medidas deseadas de rendimiento.
     print("\033[4m" + "Performance measures" + "\033[0m")
-    print("verage delay in queue:", total_of_delays / num_custs_delayed, "minutes")
-    print("Average number in queue:", area_num_in_q / sim_time)
-    print("Server utilization:", area_server_status / sim_time)
-    print("Time simulation ended:", sim_time, "minutes")
+    print("Average delay in queue:", round(total_of_delays / num_custs_delayed, 3), "minutes")
+    print("Average number in queue:", round(area_num_in_q / sim_time, 3))
+    print("Server utilization:", round(area_server_status / sim_time, 3))
+    print("Time simulation ended:", round(sim_time, 3), "minutes")
 
     # Nuevas variables
-    print("Average number of customers in the system:", area_num_in_system / sim_time)
-    print("Average time in the system:", total_time_in_system / num_custs_delayed, "minutes")
+    print("\nAverage number of customers in the system:", round(area_num_in_system / sim_time, 3))
+    print("Average time in the system:", round(total_time_in_system / num_custs_delayed, 3), "minutes")
     print("\nProbability of finding n customers in the queue:")
     for n in range(Q_LIMIT + 1):
         probability = num_in_queue_counts[n] / sim_time
