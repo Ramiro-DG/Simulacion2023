@@ -38,4 +38,4 @@ def uniforme(a, b, size):
     plt.legend()
     plt.show()
 
-    kst.ks_test(accepted, uniform, "Uniforme (inversa)")
+    kst.ks_test(accepted, uniform, "Uniforme (rechazo)")

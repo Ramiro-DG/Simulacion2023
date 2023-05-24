@@ -21,4 +21,4 @@ def uniforme(a, b, size):
     plt.ylabel('Probabilidad')
     plt.show()
 
-    kst.ks_test(datos, uniform, "Uniforme (rechazo)")
+    kst.ks_test(datos, uniform, "Uniforme (inversa)")
