@@ -1,7 +1,7 @@
 from scipy.stats import binom, nbinom
 import msvcrt
 
-def ks_test(seq, type, distr_name):
+def ks_test(seq, d_type, distr_name):
     d_positive = []
     d_negative = []
     seq.sort()
@@ -12,12 +12,12 @@ def ks_test(seq, type, distr_name):
     
     d_max = max(max(d_positive), max(d_negative))
     
-    if type(type) is type(binom):
-        k = binom.ppf(1 - 0.05 / 2, len(seq))
-    elif type(type) is type(nbinom):
-        k = nbinom.ppf(1 - 0.05 / 2, len(seq))
+    if type(d_type) is type(binom):
+        k = binom.ppf(1 - 0.05 / 2, len(seq), p = 0.5)
+    elif type(d_type) is type(nbinom):
+        k = nbinom.ppf(1 - 0.05 / 2, len(seq), p = 0.5)
     else:
-        k = type.ppf(1 - 0.05 / 2, len(seq))
+        k = d_type.ppf(1 - 0.05 / 2, len(seq))
 
     print("\n\n" + "\033[4m" + "Resultado del test:" + "\033[0m")
     if d_max < k:
