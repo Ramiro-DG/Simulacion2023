@@ -1,3 +1,6 @@
+from Shared import kolmogorov_smirnov_test as kst
+from scipy.stats import uniform
+
 import random
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,3 +20,5 @@ def uniforme(a, b, size):
     plt.xlabel('Valor')
     plt.ylabel('Probabilidad')
     plt.show()
+
+    kst.ks_test(datos, uniform, "Uniforme (rechazo)")

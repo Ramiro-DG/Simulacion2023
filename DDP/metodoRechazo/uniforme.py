@@ -1,7 +1,9 @@
 from Shared import metodo_rechazo as mr
+from Shared import kolmogorov_smirnov_test as kst
+from scipy.stats import uniform
+
 import matplotlib.pyplot as plt
 import numpy as np
-
 
 def uniforme_pdf(a, b):
     return lambda x: 1 / (b - a)
@@ -35,3 +37,5 @@ def uniforme(a, b, size):
     plt.ylabel('Probabilidad')
     plt.legend()
     plt.show()
+
+    kst.ks_test(accepted, uniform, "Uniforme (inversa)")
