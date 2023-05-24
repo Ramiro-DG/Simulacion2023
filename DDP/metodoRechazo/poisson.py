@@ -1,3 +1,6 @@
+from Shared import kolmogorov_smirnov_test as kst
+from scipy.stats import poisson
+
 import random
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,7 +9,7 @@ import scipy
 
 fig, ax = plt.subplots()
 
-aceptados=[]
+accepted=[]
 a=0
 b=30
 
@@ -16,15 +19,15 @@ def fg(x, lam)->float:
 def fx(r)->float:
     return a+(b-a)*r
 
-def poisson(lam, size):
+def poisson_rechazo(lam, size):
     for ran in range(10000):
         x=fx(np.random.uniform(0,1))
         g=fg(x, lam)
         rand=np.random.uniform(0,1)
         if(rand<=g):
-            aceptados.append(x)
+            accepted.append(x)
 
-    plt.hist(aceptados,
+    plt.hist(accepted,
             bins=30,
             density=True,
             label="Poisson por metodo rechazo")
@@ -40,3 +43,4 @@ def poisson(lam, size):
     plt.legend()
     plt.show()
 
+    kst.ks_test(accepted, poisson, "Poisson (rechazo)")

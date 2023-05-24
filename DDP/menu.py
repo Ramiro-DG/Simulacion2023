@@ -100,7 +100,7 @@ while True:
     elif opcion == 8:
         lam = float(input("Ingrese valor de lamda: "))
         size = int(input("Ingrese la cantidad de valores a generar: "))
-        r_dp.poisson(lam, size)
+        r_dp.poisson_rechazo(lam, size)
 
     elif opcion == 9:
         size = int(input("Ingrese la cantidad de valores a generar: "))
