@@ -1,3 +1,6 @@
+from Shared import kolmogorov_smirnov_test as kst
+from scipy.stats import expon
+
 import random
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,3 +30,5 @@ def exponencial(lam, size):
     plt.ylabel('Probabilidad')
     plt.legend()
     plt.show()
+
+    kst.ks_test(datos, expon, "Exponencial (inversa)")
