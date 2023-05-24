@@ -1,7 +1,10 @@
-import math
 from Shared import metodo_rechazo as mr
+from Shared import kolmogorov_smirnov_test as kst
+from scipy.stats import binom
+
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
 def mdf_binomial(n, p):
@@ -43,3 +46,5 @@ def binomial(n, p, size):
     plt.ylabel('Probabilidad')
     plt.legend()
     plt.show()
+
+    kst.ks_test(accepted, binom, "Binomial (rechazo)")
