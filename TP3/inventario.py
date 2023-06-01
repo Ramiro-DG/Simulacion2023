@@ -24,9 +24,14 @@ sim_time = 0.0
 time_last_event = 0.0
 time_next_event = [0.0] * 5
 total_ordering_cost = 0.0
+final_tot = 0.0
+final_holding = 0.0
+final_shortage = 0.0
+final_ordering = 0.0
 
 def initialize():
     global sim_time, inv_level, time_last_event, total_ordering_cost, area_holding, area_shortage, time_next_event
+    global final_tot, final_holding, final_shortage, final_ordering
 
     # Inicializa el reloj de simulación
     sim_time = 0.0
@@ -87,12 +92,18 @@ def evaluate():
 
 def report():
     global area_holding, area_shortage, total_ordering_cost, num_months, smalls, bigs, holding_cost, shortage_cost
-
+    global final_tot, final_holding, final_shortage, final_ordering
     
     # Calcula y devuelve estimaciones de medidas deseadas de rendimiento.
     avg_holding_cost = holding_cost * area_holding / num_months
     avg_shortage_cost = shortage_cost * area_shortage / num_months
     avg_ordering_cost = total_ordering_cost / num_months
+
+    # Suma el acumulado total
+    final_tot += avg_holding_cost + avg_shortage_cost + avg_ordering_cost
+    final_holding += avg_holding_cost
+    final_shortage += avg_shortage_cost
+    final_ordering += avg_ordering_cost
 
     print("\n\n({}, {}){:>15.2f}{:>15.2f}{:>15.2f}{:>15.2f}".format(
         smalls, bigs, avg_ordering_cost + avg_holding_cost + avg_shortage_cost,
@@ -204,11 +215,11 @@ def main():
 
     # Corre la simulación variando la política de inventario
     for i in range(1, int(num_policies) + 1):
+
         # Lee la política de inventario e inicializa la simulación
         smalls = smallsArray[k]
         bigs = bigsArray[k]
         initialize()
-
         
         # Corre la simulación hasta que ocurre un evento de fin de simulación (tipo 3)
         while True:
@@ -228,4 +239,11 @@ def main():
                 break
         
         k += 1
+
+    print("\n\n" + "\033[4m" + "Final costs" + "\033[0m")
+    print("Total cost:", round(final_tot, 2))
+    print("Ordering cost:", round(final_ordering, 2))
+    print("Holding cost:", round(final_holding, 2))
+    print("Shortage cost:", round(final_shortage, 2))
+
 main()
