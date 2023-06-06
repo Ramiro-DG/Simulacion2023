@@ -1,5 +1,7 @@
 import math
 import random
+import pandas as pd
+import matplotlib.pyplot as plt
 
 Q_LIMIT = 5   # Límite en la longitud de la cola.
 BUSY = 1    # Indica si el servidor esté ocupado
@@ -42,6 +44,9 @@ def initialize():
     area_num_in_system = 0.0                        # Área debajo de la función de clientes en el sistema
     total_time_in_system = 0.0                      # Tiempo total en el sistema
     num_rejections = 0
+    global size_queue 
+    size_queue= pd.DataFrame({'time':[], 'size':[]}) 
+
 
 def timing():
     global next_event_type, sim_time
@@ -168,6 +173,7 @@ def report():
     # Imprime la probabilidad de denegación de servicio}
     print("\nRejected customers:", num_rejections)
     print("Rejection probability:", round(num_rejections * 100 / num_delays_required, 2), "%")
+    size_queue.plot(x='time', y='size', kind='line', title="tamaño de la cola en el tiempo")
 
 
 def update_time_avg_stats():
@@ -180,6 +186,9 @@ def update_time_avg_stats():
     
     # Actualiza el área bajo la función del número en cola
     area_num_in_q += num_in_q * time_since_last_event
+    
+    global size_queue
+    size_queue=pd.concat([size_queue, pd.DataFrame({'time':sim_time, 'size':num_in_q}, index=[0])], ignore_index=True)
 
     # Actualiza el área bajo la función de indicador de servidor ocupado
     area_server_status += server_status * time_since_last_event
@@ -225,6 +234,7 @@ def main():
             depart()
     
     report()
+    plt.show()
 
 main()
 
