@@ -175,6 +175,14 @@ def report():
     print("Rejection probability:", round(num_rejections * 100 / num_delays_required, 2), "%")
     size_queue.plot(x='time', y='size', kind='line', title="tamaño de la cola en el tiempo")
 
+    fig, ax = plt.subplots()
+    arr_sum = sum(num_in_queue_counts)
+    frecuency_queue_size = [item / arr_sum for item in num_in_queue_counts]
+    ax.bar(range(len(frecuency_queue_size)), frecuency_queue_size, align='center', alpha=0.7)
+    ax.set_xlabel('tamaño de cola')
+    ax.set_ylabel('probabliidad')
+    ax.set_title('Distribucion de probabilidades del tamaño de la cola')
+    print(num_in_queue_counts)
 
 def update_time_avg_stats():
     global time_last_event, area_num_in_q, area_server_status, num_in_q, server_status, sim_time
