@@ -215,11 +215,6 @@ def main():
     
     num_events = 2
 
-    # Ingreso de la media de entre llegadas, la media del servicio y el número de retrasos necesarios
-    mean_interarrival = float(input("Ingrese el valor de mean_interarrival: "))
-    mean_service = float(input("Ingrese el valor de mean_service: "))
-    num_delays_required = int(input("Ingrese el valor de num_delays_required: "))
-    
     # Imprime los parámetros de entrada
     print("\n\n\n\n" + "\033[4m" + "Single-server queueing system" + "\033[0m")
     print("Mean interarrival time: {:.3f} minutes".format(mean_interarrival))
@@ -239,11 +234,52 @@ def main():
         elif next_event_type == 2:
             depart()
     
-    report()
-    plt.show()
+    #report()
+    #plt.show()
 
-main()
+
+
+
+#INICIO_________________________________
+
+
+# Ingreso de la media de entre llegadas, la media del servicio y el número de retrasos necesarios
+mean_interarrival = float(input("Ingrese el valor de mean_interarrival: "))
+mean_service = float(input("Ingrese el valor de mean_service: "))
+num_delays_required = int(input("Ingrese el valor de num_delays_required: "))
+
+
+
+sum_Average_delay_in_queue=0
+sum_Average_number_in_queue=0
+sum_Server_utilization=0
+sum_Average_number_of_customers_in_the_system=0
+sum_Average_time_in_the_system=0
+sum_Rejection_probabilty=0
+for i in range(10):                         
+    main()
+    sum_Average_delay_in_queue+=round(total_of_delays / num_custs_delayed, 3)
+    sum_Average_number_in_queue+=round(area_num_in_q / sim_time, 3)
+    sum_Server_utilization+=round(area_server_status / sim_time, 3)
+    sum_Average_number_of_customers_in_the_system+=round((area_num_in_q+ area_server_status) / sim_time, 3)
+    sum_Average_time_in_the_system+=round(total_time_in_system / num_custs_delayed, 3)
+    sum_Rejection_probabilty+= round(num_rejections * 100 / num_delays_required, 2)
+
+
+
+print('Cantidad promedio en sistema: ', sum_Average_number_of_customers_in_the_system/10)
+print('Cantidad promedio en cola: ', sum_Average_number_in_queue/10)
+print('Tiempo promedio en sistema: ',sum_Average_time_in_the_system/10)
+print('Espera promedio en cola: ',sum_Average_delay_in_queue/10)
+print('Utilizacion del servidor: ', sum_Server_utilization/10)
+print('Probabilidad de rechazo por cola llena: ',sum_Rejection_probabilty/10)
+
+sum_prob_of_n_in_queue=[]
+for n in range(Q_LIMIT + 1):
+    probability = num_in_queue_counts[n] / sim_time
+    if (round(probability, 3) != 0.0):
+        print(f"* n = {n}: {round(probability*100, 2)}%")
+
 
 # Faltaría:
-#  + Variar (al menos) las tasas de arribo: 25%, 50%, 75%, 100%, 125% con respecto a la tasa de servicio.
 #  + Mínimo 10 corridas por cada experimento.
