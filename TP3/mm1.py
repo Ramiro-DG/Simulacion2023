@@ -75,15 +75,13 @@ def arrive():
     
     # Programa la siguiente llegada
     time_next_event[1] = sim_time + expon(mean_interarrival)
-    
+    num_in_system += 1
     # Comprueba si el servidor está ocupado
     if server_status == BUSY:
 
         # Si está ocupado, aumenta el número de clientes en cola
         num_in_q += 1
 
-        # Aumenta el número de clientes en el sistema
-        num_in_system += 1
         
         # Comprueba si la cola está desbordada. Si lo está, finaliza la simulación.
         if num_in_q > Q_LIMIT:
@@ -162,7 +160,7 @@ def report():
     print("Time simulation ended:", round(sim_time, 3), "minutes")
 
     # Nuevas variables
-    print("\nAverage number of customers in the system:", round(area_num_in_system / sim_time, 3))
+    print("\nAverage number of customers in the system:", round((area_num_in_q+ area_server_status) / sim_time, 3))
     print("Average time in the system:", round(total_time_in_system / num_custs_delayed, 3), "minutes")
     print("\nProbability of finding n customers in the queue:")
     for n in range(Q_LIMIT + 1):
