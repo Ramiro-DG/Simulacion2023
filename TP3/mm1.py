@@ -3,7 +3,7 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
-Q_LIMIT = 5   # Límite en la longitud de la cola.
+Q_LIMIT = int(input('Ingrese capacidad maxima de la cola: '))
 BUSY = 1    # Indica si el servidor esté ocupado
 IDLE = 0    # Indica si el servidor está inactivo
 
@@ -171,15 +171,6 @@ def report():
     # Imprime la probabilidad de denegación de servicio}
     print("\nRejected customers:", num_rejections)
     print("Rejection probability:", round(num_rejections * 100 / num_delays_required, 2), "%")
-    size_queue.plot(x='time', y='size', kind='line', title="tamaño de la cola en el tiempo")
-
-    fig, ax = plt.subplots()
-    arr_sum = sum(num_in_queue_counts)
-    frecuency_queue_size = [item / arr_sum for item in num_in_queue_counts]
-    ax.bar(range(len(frecuency_queue_size)), frecuency_queue_size, align='center', alpha=0.7)
-    ax.set_xlabel('tamaño de cola')
-    ax.set_ylabel('probabliidad')
-    ax.set_title('Distribucion de probabilidades del tamaño de la cola')
     print(num_in_queue_counts)
 
 def update_time_avg_stats():
@@ -212,15 +203,9 @@ def expon(mean):
 
 def main():
     global num_delays_required, mean_interarrival, mean_service, num_events
-    
+
     num_events = 2
 
-    # Imprime los parámetros de entrada
-    print("\n\n\n\n" + "\033[4m" + "Single-server queueing system" + "\033[0m")
-    print("Mean interarrival time: {:.3f} minutes".format(mean_interarrival))
-    print("Mean service time: {:.3f} minutes".format(mean_service))
-    print("Number of customers: {}\n".format(num_delays_required))
-    
     # Inicia la simulación
     initialize()
     
@@ -244,26 +229,26 @@ def main():
 
 
 # Ingreso de la media de entre llegadas, la media del servicio y el número de retrasos necesarios
-mean_interarrival = float(input("Ingrese el valor de mean_interarrival: "))
-mean_service = float(input("Ingrese el valor de mean_service: "))
-num_delays_required = int(input("Ingrese el valor de num_delays_required: "))
+mean_interarrival = float(input("Ingrese el tiempo promedio entre arribos: "))
+mean_service = float(input("Ingrese el tiempo promedio de servicio: "))
+num_delays_required = int(input("Ingrese la cantidad de clientes: "))
 
 
-
-sum_Average_delay_in_queue=0
-sum_Average_number_in_queue=0
-sum_Server_utilization=0
-sum_Average_number_of_customers_in_the_system=0
-sum_Average_time_in_the_system=0
-sum_Rejection_probabilty=0
-for i in range(10):                         
+sum_Average_delay_in_queue = 0
+sum_Average_number_in_queue = 0
+sum_Server_utilization = 0
+sum_Average_number_of_customers_in_the_system = 0
+sum_Average_time_in_the_system = 0
+sum_Rejection_probabilty = 0
+for i in range(10):
+    print('Corrida ',i+1)
     main()
-    sum_Average_delay_in_queue+=round(total_of_delays / num_custs_delayed, 3)
-    sum_Average_number_in_queue+=round(area_num_in_q / sim_time, 3)
-    sum_Server_utilization+=round(area_server_status / sim_time, 3)
-    sum_Average_number_of_customers_in_the_system+=round((area_num_in_q+ area_server_status) / sim_time, 3)
-    sum_Average_time_in_the_system+=round(total_time_in_system / num_custs_delayed, 3)
-    sum_Rejection_probabilty+= round(num_rejections * 100 / num_delays_required, 2)
+    sum_Average_delay_in_queue += round(total_of_delays / num_custs_delayed, 3)
+    sum_Average_number_in_queue += round(area_num_in_q / sim_time, 3)
+    sum_Server_utilization += round(area_server_status / sim_time, 3)
+    sum_Average_number_of_customers_in_the_system += round((area_num_in_q+ area_server_status) / sim_time, 3)
+    sum_Average_time_in_the_system += round(total_time_in_system / num_custs_delayed, 3)
+    sum_Rejection_probabilty += round(num_rejections * 100 / num_delays_required, 2)
 
 
 
@@ -280,6 +265,16 @@ for n in range(Q_LIMIT + 1):
     if (round(probability, 3) != 0.0):
         print(f"* n = {n}: {round(probability*100, 2)}%")
 
+if input('Mostrar graficas??[y/n]') == 'y':
+    size_queue.plot(x='time', y='size', kind='line', title="tamaño de la cola en el tiempo")
+    fig, ax = plt.subplots()
+    arr_sum = sum(num_in_queue_counts)
+    frecuency_queue_size = [item / arr_sum for item in num_in_queue_counts]
+    ax.bar(range(len(frecuency_queue_size)), frecuency_queue_size, align='center', alpha=0.7)
+    ax.set_xlabel('tamaño de cola')
+    ax.set_ylabel('probabliidad')
+    ax.set_title('Distribucion de probabilidades del tamaño de la cola')
+    plt.show()
 
 # Faltaría:
 #  + Mínimo 10 corridas por cada experimento.
