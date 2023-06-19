@@ -254,7 +254,7 @@ for i in range(10):
 
 print('Cantidad promedio en sistema: ', sum_Average_number_of_customers_in_the_system/10)
 print('Cantidad promedio en cola: ', sum_Average_number_in_queue/10)
-print('Tiempo promedio en sistema: ',sum_Average_time_in_the_system/10)
+# print('Tiempo promedio en sistema: ',sum_Average_time_in_the_system/10)
 print('Espera promedio en cola: ',sum_Average_delay_in_queue/10)
 print('Utilizacion del servidor: ', sum_Server_utilization/10)
 print('Probabilidad de rechazo por cola llena: ',sum_Rejection_probabilty/10)
