@@ -221,6 +221,29 @@ def cost_graphs(total_costs, ordering_costs, holding_costs, shortage_costs, smal
     # Mostrar la gráfica
     plt.show()
 
+def cost_pie_chart(ordering_costs, holding_costs, shortage_costs, smallsArray, bigsArray):
+    
+    policies = []
+
+    for small, big in zip(smallsArray, bigsArray):
+        policy = f"Policy: {small}-{big}"
+        policies.append(policy)
+        policies = [...]
+
+    # Creación de la figura y los ejes
+    fig, ax = plt.subplots()
+
+    # Creación del gráfico de torta
+    labels = ['Ordering Cost', 'Holding Cost', 'Shortage Cost']
+    sizes = [ordering_costs, holding_costs, shortage_costs]
+    ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+
+    # Título de la gráfica
+    ax.set_title('Costos finales')
+
+    # Mostrar la gráfica
+    plt.show()
+
 def cost_per_policy_graphs(tot_per_pol, ord_per_pol, hold_per_pol, short_per_pol, smallsArray, bigsArray):
     policies = []
 
@@ -356,6 +379,7 @@ def main():
     print("Shortage cost:", round(final_shortage, 2))
 
     cost_graphs(final_tot, final_ordering, final_holding, final_shortage, smallsArray, bigsArray)
+    cost_pie_chart(final_ordering, final_holding, final_shortage, smallsArray, bigsArray)
     cost_per_policy_graphs(tot_per_pol, ord_per_pol, hold_per_pol, short_per_pol, smallsArray, bigsArray)
     time_cost_graphs(num_months, total_costs, ordering_costs, holding_costs, shortage_costs)
 main()
