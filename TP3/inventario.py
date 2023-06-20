@@ -1,5 +1,6 @@
 import math
 import random
+import matplotlib.pyplot as plt
 
 amount = 0
 bigs = 0
@@ -28,6 +29,10 @@ final_tot = 0.0
 final_holding = 0.0
 final_shortage = 0.0
 final_ordering = 0.0
+total_costs = []
+ordering_costs = []
+holding_costs = []
+shortage_costs = []
 
 def initialize():
     global sim_time, inv_level, time_last_event, total_ordering_cost, area_holding, area_shortage, time_next_event
@@ -93,6 +98,7 @@ def evaluate():
 def report():
     global area_holding, area_shortage, total_ordering_cost, num_months, smalls, bigs, holding_cost, shortage_cost
     global final_tot, final_holding, final_shortage, final_ordering
+    global total_costs, ordering_costs, holding_costs, shortage_costs
     
     # Calcula y devuelve estimaciones de medidas deseadas de rendimiento.
     avg_holding_cost = holding_cost * area_holding / num_months
@@ -104,6 +110,11 @@ def report():
     final_holding += avg_holding_cost
     final_shortage += avg_shortage_cost
     final_ordering += avg_ordering_cost
+
+    total_costs.append(avg_holding_cost + avg_shortage_cost + avg_ordering_cost)
+    ordering_costs.append(avg_ordering_cost)
+    holding_costs.append(avg_holding_cost)
+    shortage_costs.append(avg_shortage_cost)
 
     print("\n\n({}, {}){:>15.2f}{:>15.2f}{:>15.2f}{:>15.2f}".format(
         smalls, bigs, avg_ordering_cost + avg_holding_cost + avg_shortage_cost,
@@ -166,8 +177,65 @@ def timing():
     sim_time = min_time_next_event
 
 
+def cost_graphs(total_costs, ordering_costs, holding_costs, shortage_costs, smallsArray, bigsArray):
+    
+    policies = []
+
+    for small, big in zip(smallsArray, bigsArray):
+        policy = f"Policy: {small}-{big}"
+        policies.append(policy)
+        policies = [...]          # Lista de nombres de políticas de inventario
+
+    # Configuración de la gráfica de barras
+    x = range(len(policies))
+    width = 0.2              # Ancho de las barras
+
+    # Creación de la figura y los ejes
+    fig, ax = plt.subplots()
+
+    # Creación de las barras para cada tipo de costo
+    bar1 = ax.bar(x, total_costs, width, label='Total Cost')
+    bar2 = ax.bar([i + width for i in x], ordering_costs, width, label='Ordering Cost')
+    bar3 = ax.bar([i + 2*width for i in x], holding_costs, width, label='Holding Cost')
+    bar4 = ax.bar([i + 3*width for i in x], shortage_costs, width, label='Shortage Cost')
+
+    # Etiquetas de los ejes y título de la gráfica
+    ax.set_xlabel('Inventory Policies')
+    ax.set_ylabel('Cost')
+    ax.set_title('Cost Breakdown by Inventory Policy')
+    ax.set_xticks([i + 1.5*width for i in x])
+    ax.set_xticklabels(policies)
+
+    # Leyenda de la gráfica
+    ax.legend()
+
+    # Mostrar la gráfica
+    plt.show()
+
+
+def time_cost_graphs(months, total_costs, ordering_costs, holding_costs, shortage_costs):
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, months+1), total_costs, marker='o', linestyle='-', label='Total Costs')
+    plt.plot(range(1, months+1), ordering_costs, marker='s', linestyle='--', label='Ordering Costs')
+    plt.plot(range(1, months+1), holding_costs, marker='^', linestyle='--', label='Holding Costs')
+    plt.plot(range(1, months+1), shortage_costs, marker='d', linestyle='--', label='Shortage Costs')
+
+    plt.xlabel('Months')
+    plt.ylabel('Costs')
+    plt.title('Costs Variation Over Time')
+    plt.legend()
+
+    # ValueError: x and y must have same first dimension, but have shapes (8,) and (9,)
+
+    # Mostrar la gráfica
+    plt.show()
+
+
+
 def main():
     global k, prob_distrib_demand, num_events, num_policies, smalls, bigs, num_months, num_values_demand, mean_interdemand, setup_cost, incremental_cost, holding_cost, shortage_cost, minlag, maxlag
+    global total_costs, ordering_costs, holding_costs, shortage_costs
 
     num_events = 4
     k = 0
@@ -186,7 +254,7 @@ def main():
     # maxlag = float(input("Ingrese el valor de maxlag: "))
     
     # Valores de ejemplo del libro:
-    initial_inv_level, num_months, num_policies, num_values_demand, mean_interdemand, setup_cost, incremental_cost, holding_cost, shortage_cost, minlag, maxlag = 60, 120, 9, 4, 0.10, 32, 3, 1, 5, 0.5, 1
+    initial_inv_level, num_months, num_policies, num_values_demand, mean_interdemand, setup_cost, incremental_cost, holding_cost, shortage_cost, minlag, maxlag = 60, 9, 9, 4, 0.10, 32, 3, 1, 5, 0.5, 1
 
     prob_distrib_demand = [0.0] * (int(num_values_demand) + 1)
     for i in range(1, int(num_values_demand) + 1):
@@ -246,4 +314,6 @@ def main():
     print("Holding cost:", round(final_holding, 2))
     print("Shortage cost:", round(final_shortage, 2))
 
+    cost_graphs(final_tot, final_ordering, final_holding, final_shortage, smallsArray, bigsArray)
+    time_cost_graphs(num_months, total_costs, ordering_costs, holding_costs, shortage_costs)
 main()
