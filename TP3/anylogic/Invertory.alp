@@ -1931,7 +1931,7 @@ return cost/ 365;]]></Body>
 				<Oval>
 					<Id>1173169519515</Id>
 					<Name><![CDATA[oval1]]></Name>
-					<X>136.598</X><Y>77.131</Y>
+					<X>329.751</X><Y>87.018</Y>
 					<Label><X>0</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1953,7 +1953,7 @@ return cost/ 365;]]></Body>
 				<Group>
 					<Id>1173169553744</Id>
 					<Name><![CDATA[group]]></Name>
-					<X>193</X><Y>60</Y>
+					<X>386.153</X><Y>69.887</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1996,7 +1996,7 @@ return cost/ 365;]]></Body>
 				<Polyline>
 					<Id>1173169716177</Id>
 					<Name><![CDATA[polyline]]></Name>
-					<X>96.847</X><Y>50.113</Y>
+					<X>290</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2026,7 +2026,7 @@ return cost/ 365;]]></Body>
 				<Group>
 					<Id>1173170089785</Id>
 					<Name><![CDATA[group1]]></Name>
-					<X>113.884</X><Y>115.613</Y>
+					<X>307.037</X><Y>125.5</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2120,7 +2120,7 @@ return cost/ 365;]]></Body>
 				<Text>
 					<Id>1173170716166</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>136.598</X><Y>118.069</Y>
+					<X>329.751</X><Y>127.956</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2141,7 +2141,7 @@ return cost/ 365;]]></Body>
 				<Polyline>
 					<Id>1173170021697</Id>
 					<Name><![CDATA[polyline1]]></Name>
-					<X>160.936</X><Y>68.944</Y>
+					<X>354.089</X><Y>78.831</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2649,7 +2649,7 @@ return cost/ 365;]]></Body>
 				<Group>
 					<Id>1173177954814</Id>
 					<Name><![CDATA[group7]]></Name>
-					<X>228.269</X><Y>102.513</Y>
+					<X>421.422</X><Y>112.4</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3009,7 +3009,7 @@ return cost/ 365;]]></Body>
 				<Line>
 					<Id>1173179072330</Id>
 					<Name><![CDATA[line468]]></Name>
-					<X>197.442</X><Y>113.975</Y>
+					<X>390.595</X><Y>123.862</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3159,7 +3159,7 @@ return cost/ 365;]]></Body>
 				<Text>
 					<Id>1173183277789</Id>
 					<Name><![CDATA[text13]]></Name>
-					<X>173.104</X><Y>40.288</Y>
+					<X>366.257</X><Y>50.175</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3180,7 +3180,7 @@ return cost/ 365;]]></Body>
 				<Text>
 					<Id>1173183303215</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>136.598</X><Y>138.538</Y>
+					<X>329.751</X><Y>148.425</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3395,7 +3395,7 @@ return cost/ 365;]]></Body>
 				<Group>
 					<Id>1687449760714</Id>
 					<Name><![CDATA[factory1]]></Name>
-					<X>340</X><Y>90</Y>
+					<X>533.153</X><Y>99.887</Y>
 					<Label><X>37.774</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3828,7 +3828,7 @@ return cost/ 365;]]></Body>
 				<Text>
 					<Id>1687451097097</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>560</X><Y>460</Y>
+					<X>550</X><Y>440</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3838,10 +3838,10 @@ return cost/ 365;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12237499</Color>
-					<Text><![CDATA[Total Cost:]]></Text>
+					<Text><![CDATA[Total cost:]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>26</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -3849,7 +3849,7 @@ return cost/ 365;]]></Body>
 				<Text>
 					<Id>1687451119981</Id>
 					<Name><![CDATA[text18]]></Name>
-					<X>570</X><Y>480</Y>
+					<X>580</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3862,7 +3862,7 @@ return cost/ 365;]]></Body>
 					<Text><![CDATA[$]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>18</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -3870,7 +3870,7 @@ return cost/ 365;]]></Body>
 				<Text>
 					<Id>1687451132650</Id>
 					<Name><![CDATA[text19]]></Name>
-					<X>610</X><Y>470</Y>
+					<X>600</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3880,10 +3880,11 @@ return cost/ 365;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12237499</Color>
-					<Text><![CDATA[Total Cost:]]></Text>
+					<Text><![CDATA[00.00]]></Text>
+					<TextCode><![CDATA[meanDailyCost()]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>18</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -11760,6 +11761,6 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 		<VersionMinor>0</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
-	<CloudModelUuid><![CDATA[a17b5bbe-7c9d-4460-9be7-15c9820ebec0]]></CloudModelUuid>
+	<CloudModelUuid><![CDATA[caf3e9ce-bd85-4e70-9820-64700c9bcc28]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
