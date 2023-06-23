@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.3.202304281219" AlpVersion="8.7.7">
 <Model>
 	<Id>1172827656617</Id>
-	<Name><![CDATA[Invertory]]></Name>
+	<Name><![CDATA[Supply Chain]]></Name>
 	<Description><![CDATA[A simple model of a supply chain consisting of a retailer, a wholesaler, and a factory. Customers arrive to the retailer, demand a product, and take the currently available items.  The excess of demand over supply is backlogged. At the beginning of each day, the retailer and the wholesaler review their inventory levels and decide how many items to order. Similarly, the factory decides how many items to manufacture. All of them use a stationary policy. Cost is associated with ordering, manufacturing, holding products, and having a backlog of orders (shortage). The output of the simulation includes the structured mean daily cost for all supply chain elements, and the distribution of waiting times for customers to get their orders. The goal of the model is to find the inventory policy parameters for the supply chain that result in minimum cost and minimum waiting times. The model includes a simulation experiment where you can set up the parameters manually, and the automatic optimization experiment.]]></Description>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[supply_chain]]></JavaPackageName>
@@ -3825,69 +3825,6 @@ return cost/ 365;]]></Body>
 			</Presentation>
 
 				</Group>
-				<Text>
-					<Id>1687451097097</Id>
-					<Name><![CDATA[text17]]></Name>
-					<X>560</X><Y>460</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12237499</Color>
-					<Text><![CDATA[Total Cost:]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1687451119981</Id>
-					<Name><![CDATA[text18]]></Name>
-					<X>570</X><Y>480</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12237499</Color>
-					<Text><![CDATA[$]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1687451132650</Id>
-					<Name><![CDATA[text19]]></Name>
-					<X>610</X><Y>470</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12237499</Color>
-					<Text><![CDATA[Total Cost:]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 			</Presentation>
 
 				</Level>
@@ -6420,7 +6357,7 @@ if ( retailerParamertersHistory.size() > 10 ) {
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Inventory System]]></Text>
+					<Text><![CDATA[A Simple Supply Chain]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>28</Size>
